@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+}
+
+.container{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+.header{
+    grid-row: 1/2;
+    background-color: yellow;
+}
+
+.library{
+    grid-row: 2/3;
+    background-color: purple;
+}
