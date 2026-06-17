@@ -16,4 +16,14 @@ body{
 .library{
     grid-row: 2/3;
     background-color: purple;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.bookDiv{
+    border: 1px solid black;
+    height: 200px;
+    padding: 10px;
 }
