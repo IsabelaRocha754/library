@@ -11,14 +11,21 @@ body{
 .header{
     grid-row: 1/2;
     background-color: yellow;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-library{
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px,1fr));
+    gap: 15px;
 }
 
 .library{
-    grid-row: 2/3;
-    background-color: purple;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
     padding: 20px;
 }
 

@@ -9,8 +9,38 @@
 </head>
 <body>
     <div class="container">
-        <div class="header"></div>
-        <div class="library"></div>
+        <div class="header">
+            <div class="logo">LOGO</div>
+            <button class="add">ADD NEW BOOK</button>
+            <dialog class="book-dialog">
+                <form class="book-form">
+                    <h2>Add Book</h2>
+                    <label>
+                        Title
+                        <input type="text" id="title" required>
+                    </label>
+                    <label>
+                        Author
+                        <input type="text" id="author" required>
+                    </label>
+                    <label>
+                        Year
+                        <input type="number" id="year" required>
+                    </label>
+                    <label>
+                        Read
+                        <input type="checkbox" id="read">
+                    </label>
+
+                    <button type="submit">Add Book</button>
+                    <button type="button" id="cancel-btn">Cancel</button>
+                </form>
+            </dialog>
+        </div>
+        <div class="library">
+            <div class="my-books">MY BOOKS</div>
+            <div class="my-library"></div>
+        </div>
     </div>
 </body>
 </html>
