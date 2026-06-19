@@ -149,3 +149,41 @@ button:hover:not(.theme){
     align-items: center;
     gap: 15px;
 }
+
+dialog{
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.15);
+    background-color: var(--bg-color);
+}
+
+dialog form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+dialog label{
+    font-family: Robot, sans-serif;
+    font-size: 20px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+dialog input{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    color: var(--text-color);
+    box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.15);
+}
+
+dialog input[type="checkbox"],
+dialog input[type="radio"]{
+    background-color: var(--button-color);
+}

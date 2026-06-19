@@ -22,22 +22,30 @@
             <dialog class="book-dialog">
                 <form class="book-form">
                     <h2>Add Book</h2>
+                    <p>
+                        <label>
+                            Title:
+                            <input type="text" id="title" required>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            Author:
+                            <input type="text" id="author" required>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            Year:
+                            <input type="number" id="year" required>
+                        </label>
+                    </p>
+                    <p>
                     <label>
-                        Title
-                        <input type="text" id="title" required>
-                    </label>
-                    <label>
-                        Author
-                        <input type="text" id="author" required>
-                    </label>
-                    <label>
-                        Year
-                        <input type="number" id="year" required>
-                    </label>
-                    <label>
-                        Read
-                        <input type="checkbox" id="read">
-                    </label>
+                            Read
+                            <input type="checkbox" id="read">
+                        </label>
+                    </p>
                     <p>Section:
                         <input type="radio" id="my-books" name="section" value="my-books" checked>
                         <label for="my-books">My Books</label>
