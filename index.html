@@ -38,6 +38,13 @@
                         Read
                         <input type="checkbox" id="read">
                     </label>
+                    <p>Section:
+                        <input type="radio" id="my-books" name="section" value="my-books" checked>
+                        <label for="my-books">My Books</label>
+
+                        <input type="radio" id="my-wishlist" name="section" value="wishlist">
+                        <label for="my-wishlist">Wishlist</label>
+                    </p>
 
                     <button type="submit">Add Book</button>
                     <button type="button" id="cancel-btn">Cancel</button>
@@ -47,6 +54,8 @@
         <div class="library">
             <div class="my-books">MY BOOKS</div>
             <div class="my-library"></div>
+            <div class="my-wishlist">WISHLIST</div>
+            <div class="wishlist-library"></div>
         </div>
     </div>
 </body>

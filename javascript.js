@@ -1,35 +1,38 @@
 const myLibrary = [];
 
-function Book(title, author, year, read, remove) {
+const myWishlist = [];
+
+/*book obj constructor*/
+function Book(choseSection, title, author, year, read, remove, section) {
     this.title = title;
     this.author = author;
     this.year = year;
     this.read = read;
-    this.remove = document.createElement('button');
-    this.remove.innerText = 'Remove';
-    this.remove.onclick = () => {
-        let index = myLibrary.indexOf(this);
-        if (index > -1){
-            myLibrary.splice(index, 1);
-            displayLibrary();
-        }
-    }
+    this.section = section;
     this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(title, author, year, read, remove) {
+function addBookToLibrary(choseSection, title, author, year, read, remove, section) {
   // take params, create a book then store it in the array
-  let book = new Book(title, author, year, read, remove);
-  myLibrary.push(book);
+  let book = new Book(choseSection, title, author, year, read, remove, section);
+  choseSection.push(book);
   return book;
 }
 
-function displayLibrary() {
-    const libraryDiv = document.querySelector('.my-library');
+function displayLibrary(choseSection) {
+    let classSection;
+    if (choseSection == myLibrary){
+        classSection = ".my-library"; 
+    }
+    else{
+        classSection = ".wishlist-library";
+    }
+
+    const libraryDiv = document.querySelector(classSection);
 
     libraryDiv.innerHTML = '';
     
-    myLibrary.forEach(book => {
+    choseSection.forEach(book => {
         const bookDiv = document.createElement('div');
         bookDiv.classList.add('bookDiv');
         libraryDiv.appendChild(bookDiv);
@@ -67,25 +70,25 @@ function displayLibrary() {
         removeBtn.textContent = 'Remove';
         removeBtn.classList.add('removeBtn');
         removeBtn.addEventListener('click', () => {
-            const index = myLibrary.indexOf(book);
+            const index = choseSection.indexOf(book);
             if (index > -1){
-                myLibrary.splice(index, 1);
-                displayLibrary();
+                choseSection.splice(index, 1);
+                displayLibrary(choseSection);
             }
         });
         bookDiv.appendChild(removeBtn);
     })
 }
 
-const laranjaMecanica = addBookToLibrary('Laranja Mecanica', 'Anthony Burgess', 1980);
+const laranjaMecanica = addBookToLibrary(myLibrary, 'Laranja Mecanica', 'Anthony Burgess', 1980);
 
-const oMundoDeSofia = addBookToLibrary('O Mundo de Sofia', 'Jostein Gaarder', 1980);
+const oMundoDeSofia = addBookToLibrary(myLibrary, 'O Mundo de Sofia', 'Jostein Gaarder', 1980);
 
-const dune = addBookToLibrary('Dune', 'Frank Herbert', 1980);
+const dune = addBookToLibrary(myLibrary, 'Dune', 'Frank Herbert', 1980);
 
-const duneMesiah = addBookToLibrary('Dune Messiah', 'Frank Herbert', 1981);
+const duneMesiah = addBookToLibrary(myLibrary, 'Dune Messiah', 'Frank Herbert', 1981);
 
-const ei = addBookToLibrary('Ei! Tem Alguem Ai', 'Jostein Gaarner', 1980);
+const ei = addBookToLibrary(myWishlist, 'Ei! Tem Alguem Ai', 'Jostein Gaarner', 1980);
 
 //form to add new book
 const dialog = document.querySelector('.book-dialog');
@@ -109,17 +112,27 @@ form.addEventListener('submit', (e) => {
     const year = document.querySelector('#year').value;
     const read = document.querySelector('#read').checked;
 
-    addBookToLibrary(title, author, year, read);
+    const sectionValue = document.querySelector(
+        `input[name="section"]:checked`
+    ).value;
+
+    const section =
+        sectionValue === 'my-books' ? myLibrary : myWishlist;
+    console.log(section);
+
+    addBookToLibrary(section, title, author, year, read);
 
     form.reset();
     dialog.close();
 
-    displayLibrary();
+    displayLibrary(section);
 });
 
 console.log(myLibrary);
+console.log(myWishlist);
 
-displayLibrary();
+displayLibrary(myLibrary);
+displayLibrary(myWishlist);
 
 //theme toggle
 const themeBtn = document.querySelector('.theme');
