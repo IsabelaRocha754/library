@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: Roboto, sans-serif;
 }
 
 .container{
@@ -10,11 +11,12 @@ body{
 
 .header{
     grid-row: 1/2;
-    background-color: yellow;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #ff00d0;
+    background: linear-gradient(45deg, rgba(255, 0, 208, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
 }
 
 .my-library{
@@ -23,14 +25,61 @@ body{
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(150px,1fr));
     gap: 15px;
+    position: relative;
+    top: 100px;
+    z-index: 2;
 }
 
 .library{
     padding: 20px;
+    background-color: #F8FAFC;
+}
+
+.my-books{
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    margin: 0;
+    position: absolute;
+    left: 20px;
+    top: 200px;
+    z-index: 1;
 }
 
 .bookDiv{
     border: 1px solid black;
     height: 200px;
     padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #A6A19C;
+    box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.15);
+    background-color: white;
+    width: 280px;
+    position: relative;
+}
+
+.removeBtn{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+button{
+    border-radius: 20px;
+    background-color: whitesmoke;
+    padding: 10px 20px;
+    border: none;
+    color: lightslategray;
+    font-weight: bold;
+}
+
+.add{
+    box-shadow: 5px 5px 20px 12px rgba(0,0,0,0.15);
+}
+
+button:hover{
+    background-color: lightslategray;
+    color: whitesmoke;
+    transform: translate(-2px, 2px);
 }

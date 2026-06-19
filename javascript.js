@@ -1,16 +1,25 @@
 const myLibrary = [];
 
-function Book(title, author, year, read) {
+function Book(title, author, year, read, remove) {
     this.title = title;
     this.author = author;
     this.year = year;
     this.read = read;
+    this.remove = document.createElement('button');
+    this.remove.innerText = 'Remove';
+    this.remove.onclick = () => {
+        let index = myLibrary.indexOf(this);
+        if (index > -1){
+            myLibrary.splice(index, 1);
+            displayLibrary();
+        }
+    }
     this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(title, author, year, read) {
+function addBookToLibrary(title, author, year, read, remove) {
   // take params, create a book then store it in the array
-  let book = new Book(title, author, year, read);
+  let book = new Book(title, author, year, read, remove);
   myLibrary.push(book);
   return book;
 }
@@ -40,10 +49,35 @@ function displayLibrary() {
         bookYear.classList.add('info');
         bookDiv.appendChild(bookYear);
         bookYear.textContent = `Year: ${book.year}`;
+
+        const readLabel = document.createElement('label');
+        readLabel.textContent = 'Read ';
+        bookDiv.appendChild(readLabel);
+        
+        const bookRead = document.createElement('input');
+        bookRead.type = 'checkbox';
+        bookRead.classList.add('info');
+        bookRead.checked = book.read;
+        bookDiv.appendChild(bookRead);
+        bookRead.addEventListener('change', () => {
+            book.read = bookRead.checked;
+        });
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.classList.add('removeBtn');
+        removeBtn.addEventListener('click', () => {
+            const index = myLibrary.indexOf(book);
+            if (index > -1){
+                myLibrary.splice(index, 1);
+                displayLibrary();
+            }
+        });
+        bookDiv.appendChild(removeBtn);
     })
 }
 
-const laranjaMecanica = addBookToLibrary('Laranja Mecanica', 'Anthony Burgess', 1980, 'read');
+const laranjaMecanica = addBookToLibrary('Laranja Mecanica', 'Anthony Burgess', 1980);
 
 const oMundoDeSofia = addBookToLibrary('O Mundo de Sofia', 'Jostein Gaarder', 1980);
 
